@@ -101,9 +101,40 @@ gRPC는 google에서 개발한 오픈소스 RPC(Remote Procedure Call)프레임 
 
     클라이언트와 서버가 서로 독립적인 스트림을 주고 받음
 
+## PROTOC 설치
+
+1. 설치 파일 다운로드
+
+```bash
+$ wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protobuf-all-3.17.3.tar.gz
+```
+
+2. 압축 해제 후 빌드
+
+```bash
+$ tar xvf protobuf-all-3.17.3.tar.gz
+$ sudo ./configure
+$ sudo make
+$ sudo make check
+$ sudo make install
+```
+
+3. 설치 확인
+
+```bash
+protoc --version
+```
+
+4. 오류 발생시
+
+```bash
+sudo ldconfig
+protoc --version
+```
+
 ## GoLang을 사용한 실습
 
-#### 1. go 의존성 설치
+1. go 의존성 설치
 
 ```bash
 # grpc import
@@ -111,7 +142,7 @@ $ go get -u google.golang.org/grpc
 $ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
-#### 2. ``.proto `` 파일 작성(IDL 정의)
+2. ``.proto `` 파일 작성(IDL 정의)
 
 ```protobuf
 /*
