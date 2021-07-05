@@ -13,17 +13,19 @@ OBJS = $(SRCS:.proto=$@)
 # Linking Part                                   #
 # (Select linking option on your TARGET purpose) #
 #------------------------------------------------#
-all: $(OBJS)
-$(OBJS): $(SRCS)
-    pandoc --standalone --to man $@.md -o $@
+all: go
 
 ##########################
 # DON'T edit below lines #
 #------------------------#
 go: $(OBJS)
     @echo "==============================================================="
+    mkdir -p gen/go
+	protoc $PROTO_PATH --go_out=tutorial $(OBJS)
+    @echo "==============================================================="
 
 java: $(OBJS)
+    mkdir -p gen/java
     @echo "==============================================================="
 
 clean:

@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package unary;
 
-option go_package = "example.com/project/protos/unary";
-
 service Unray {
     rpc SayHelloWorld(HelloRequest) returns (HelloResponse);
 }
