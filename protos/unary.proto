@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package unary;
+
+option go_package = "example.com/project/protos/unary";
+
+service Unray {
+    rpc SayHelloWorld(HelloRequest) returns (HelloResponse);
+}
+
+message HelloRequest {
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+}
