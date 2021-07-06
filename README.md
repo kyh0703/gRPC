@@ -132,6 +132,20 @@ sudo ldconfig
 protoc --version
 ```
 
+## GRPC 유의사항
+
+#### 명명규칙
+
+* **Service**: CalmelCase(단, 첫 문자는 대문자)
+
+* **Message**: CalmelCase(단, 첫 문자는 대문자)
+
+* **Feild**: 밑줄(_)문자를 이용해 작성함
+
+* **enum**: CalmelCase(단, 첫문자는 대문자)이며 값 이름에 대해서는 대문자와 밑줄(_)을 사용한다.
+
+    열거 값은 0부터 시작하며, 각 값마다 콤마(,)가 아닌 세미콜론(;)으로 구분한다.
+
 ## GoLang을 사용한 실습
 
 1. go 의존성 설치
@@ -146,12 +160,8 @@ $ go get -u github.com/golang/protobuf/protoc-gen-go
 
 ```protobuf
 /*
-[ 명명규칙 ]
-Service: CalmelCase다(단, 첫 문자는 대문자)
-Message: CalmelCase(단, 첫 문자는 대문자)
-Field: 밑줄(_)문자를 이용해 작성함
-enum: CalmelCase(단, 첫 문자는 대문자)이며 값 이름에 대해서는 대문자와 밑을(_)을 사용한다.
-열거탑은 값은 0부터 시작하며, 각 값마다 콤마(,)가 아닌 세미콜론(;)으로 구분한다.
+[ 규칙 ]
+첫번째 줄에는 어떤문법을 사용할지 "syntax"로 정의하여야 하며 주석또한 있으면 안된다.
 */
 
 // 버전2와 버전3 중 선택
