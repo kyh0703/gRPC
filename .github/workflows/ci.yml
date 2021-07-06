@@ -20,6 +20,3 @@ jobs:
         uses: arduino/setup-protoc@v1
         with:
           version: '3.17.3'
-
-      - name: Run Make
-        run: make
