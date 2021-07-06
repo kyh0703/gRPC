@@ -5,9 +5,6 @@ import (
 	"log"
 	"net"
 
-	data "data"
-	pb "gen/go/"
-
 	"google.golang.org/grpc"
 )
 
