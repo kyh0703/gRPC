@@ -27,4 +27,8 @@ jobs:
           go-version: '1.16'
 
       - name: Run Makefile
-        run: make
+        run: |
+        go get -u github.com/ckaznocha/protoc-gen-lint
+        go get -u google.golang.org/grpc
+        go get -u github.com/golang/protobuf/protoc-gen-go
+        make
