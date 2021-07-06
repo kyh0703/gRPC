@@ -14,6 +14,7 @@ message UserMessage {
     string name = 2;
     string phone_number = 3;
     int32 age = 4;
+    int32 age2 = 5;
 }
 
 message GetUserRequest {
