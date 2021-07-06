@@ -146,6 +146,22 @@ protoc --version
 
     열거 값은 0부터 시작하며, 각 값마다 콤마(,)가 아닌 세미콜론(;)으로 구분한다.
 
+#### LINT
+
+1. 설치 방법
+
+```bash
+$ go get -u github.com/ckaznocha/protoc-gen-lint
+```
+
+2. 실행방법
+
+```bash
+$ protoc --lint_out=. *.proto
+```
+
+
+
 ## GoLang을 사용한 실습
 
 1. go 의존성 설치
@@ -171,7 +187,7 @@ syntax = "proto3"
 package com.ipron.call
 
 // option: generate로 생성된 소스에 적용될 패키지 명을 설정
-option go_pacage = "github/kyh0703/grpc/protos/v1/call"
+option go_package = "github/kyh0703/v1/call"
 
 // service: 인터페이스 정의
 service Call {
