@@ -1,9 +1,9 @@
 // protos/v1/user/user.proto
 syntax = "proto3";
 
-package user.v1;
+package user.v2;
 
-option go_package = "user/v1";
+option go_package = "user/v2";
 
 service User {
     rpc GetUser(GetUserRequest) returns (GetUserResponse);
