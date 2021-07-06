@@ -35,3 +35,11 @@ jobs:
 
       - name: Run Makefile
         run: make
+
+      - name: Commit & Push
+        run: |
+          git add .
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git commit -am "Update Generated File"
+          git push
