@@ -1,17 +1,19 @@
 package main
-
 import (
 	"context"
 	"log"
 	"net"
 
 	"google.golang.org/grpc"
+
+	"github.com/kyh0703/grpc/example/data"
+	userpb "github.com/kyh0703/grpc/v1/user"
 )
 
 const portNumber = "9000"
 
-type UserServer struct {
-	pb.UserServer
+type userServer struct {
+	userpb.UserServer
 }
 
 // GetUser returns user message by user_id
@@ -57,4 +59,3 @@ func main() {
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
-}
