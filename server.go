@@ -1,21 +1,63 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net"
+
+	data "data"
+	pb "gen/go/"
 
 	"google.golang.org/grpc"
 )
 
+const portNumber = "9000"
+
+type UserServer struct {
+	pb.UserServer
+}
+
+// GetUser returns user message by user_id
+func (s *userServer) GetUser(ctx context.Context, req *userpb.GetUserRequest) (*userpb.GetUserResponse, error) {
+	userID := req.UserId
+
+	var userMessage *userpb.UserMessage
+	for _, u := range data.Users {
+		if u.UserId != userID {
+			continue
+		}
+		userMessage = u
+		break
+	}
+
+	return &userpb.GetUserResponse{
+		UserMessage: userMessage,
+	}, nil
+}
+
+// ListUsers returns all user messages
+func (s *userServer) ListUsers(ctx context.Context, req *userpb.ListUsersRequest) (*userpb.ListUsersResponse, error) {
+	userMessages := make([]*userpb.UserMessage, len(data.Users))
+	for i, u := range data.Users {
+		userMessages[i] = u
+	}
+
+	return &userpb.ListUsersResponse{
+		UserMessages: userMessages,
+	}, nil
+}
+
 func main() {
-	lis, err := net.Listen("tcp", ":"+"9000")
+	lis, err := net.Listen("tcp", ":"+portNumber)
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatalf("failed to listen: %v", err)
 	}
 
 	grpcServer := grpc.NewServer()
-	log.Printf("Start gRPC Server On %s port", "9000")
+	userpb.RegisterUserServer(grpcServer, &userServer{})
+
+	log.Printf("start gRPC server on %s port", portNumber)
 	if err := grpcServer.Serve(lis); err != nil {
-		log.Fatalln(err)
+		log.Fatalf("failed to serve: %s", err)
 	}
 }
