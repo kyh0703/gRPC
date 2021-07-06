@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/kyh0703/grpc/example/data"
-	userpb "github.com/kyh0703/grpc/gen/v1/user"
+	userpb "github.com/kyh0703/grpc/gen/user/v1"
 )
 
 const portNumber = "9000"

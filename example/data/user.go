@@ -1,7 +1,7 @@
 package data
 
 import (
-	userpb "github.com/kyh0703/grpc/gen/v1/user"
+	userpb "github.com/kyh0703/grpc/gen/user/v1"
 )
 
 var UserData = []*userpb.UserMessage{

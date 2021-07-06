@@ -20,7 +20,7 @@ OPTIONS=--proto_path=$(INC)
 # Linking Part                                   #
 # (Select linking option on your TARGET purpose) #
 #------------------------------------------------#
-all: lint go java
+all: lint go
 
 ##########################
 # DON'T edit below lines #
@@ -31,17 +31,18 @@ lint: $(SRCS)
 	@echo ""
 
 # @protoc $(OPTIONS) --go-grpc_out=$(GEN_PATH)/go --go-grpc_opt paths=source_relative $^
+# @protoc $(OPTIONS) --go_out=plugins=grpc:$(GEN_PATH)/go --go_opt=paths=source_relative $^
 go: $(SRCS)
 	@echo "[make protoc go]"
-	@mkdir -p $(GEN_PATH)/go
-	@protoc -I=protos --go_out=plugins=grpc:$(GEN_PATH)/go --go_opt=paths=source_relative $^
+	@mkdir -p $(GEN_PATH)
+	@protoc $(OPTIONS) --go_out=plugins=grpc:$(GEN_PATH) $^
 	@echo "- $^"
 	@echo ""
 
 java: $(SRCS)
 	@echo "[make protoc java]"
 	@mkdir -p $(GEN_PATH)/java
-	@protoc $(OPTIONS)
+	@protoc $(OPTIONS)  --plugin=protoc-gen-grpc-java --grpc-java_out=$(GEN_PATH) $^
 	@echo "- $^"
 	@echo ""
 

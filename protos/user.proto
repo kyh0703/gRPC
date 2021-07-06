@@ -1,9 +1,9 @@
 // protos/v1/user/user.proto
 syntax = "proto3";
 
-package v1.user;
+package user.v1;
 
-option go_package = "github.com/kyh0703/gRPC/gen/v1/user";
+option go_package = "user/v1";
 
 service User {
     rpc GetUser(GetUserRequest) returns (GetUserResponse);
