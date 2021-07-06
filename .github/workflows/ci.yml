@@ -2,9 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
-      - protos
+      - 'protos/*'
 
   workflow_dispatch:
 
