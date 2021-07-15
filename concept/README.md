@@ -71,8 +71,6 @@ Protocal Buffer는 Google에서 개발한 구조화된 데이터를 직렬화 �
 
 example) json: 82byte -> protocol buffer: 33byte
 
-![image-20210705112133689](image/image-20210705112133689.png)
-
 ## gRPC?
 
 gRPC는 google에서 개발한 오픈소스 RPC(Remote Procedure Call)프레임 워크로 Protocal  Buffer기반 Serizlaizer에 HTTP/2를 결합

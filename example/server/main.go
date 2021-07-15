@@ -7,11 +7,16 @@ import (
 
 	"google.golang.org/grpc"
 
+	"github.com/caarlos0/env"
 	"github.com/kyh0703/grpc/example/data"
 	userpb "github.com/kyh0703/grpc/gen/v1/user"
 )
 
-const portNumber = "9000"
+type Config struct {
+	Port         string `env:"PORT" envDefault:"9000"`
+	IsProduction bool   `env:"PRODUCTION"`
+	// SecertKey    string `env:"SECRET_KEY, required"`
+}
 
 type userServer struct {
 	userpb.UserServer
@@ -48,7 +53,10 @@ func (s *userServer) ListUsers(ctx context.Context, req *userpb.ListUsersRequest
 }
 
 func main() {
-	lis, err := net.Listen("tcp", ":"+portNumber)
+	cfg := Config{}
+	env.Parse(&cfg)
+
+	lis, err := net.Listen("tcp", ":"+cfg.Port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
@@ -56,7 +64,7 @@ func main() {
 	grpcServer := grpc.NewServer()
 	userpb.RegisterUserServer(grpcServer, &userServer{})
 
-	log.Printf("start gRPC server on %s port", portNumber)
+	log.Printf("start gRPC server on %s port", cfg.Port)
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %s", err)
 	}
