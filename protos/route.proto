@@ -37,7 +37,7 @@ message AgentResponse {
 }
 
 message RingRequest {
-    strign call_id = 1;
+    string call_id = 1;
 }
 
 message RingResponse {
