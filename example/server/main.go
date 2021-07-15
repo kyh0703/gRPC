@@ -9,7 +9,7 @@ import (
 
 	"github.com/caarlos0/env"
 	"github.com/kyh0703/grpc/example/data"
-	userpb "github.com/kyh0703/grpc/gen/v1/user"
+	userpb "github.com/kyh0703/grpc/gen/user/v1"
 )
 
 type Config struct {

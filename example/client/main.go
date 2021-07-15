@@ -7,11 +7,11 @@ import (
 
 	"google.golang.org/grpc"
 
-	userpb "github.com/kyh0703/grpc/gen/v1/user"
+	userpb "github.com/kyh0703/grpc/gen/user/v1"
 )
 
 func main() {
-	// 아무래도 grpc 구현관련 조사가 더 필요할꺼같다..
+	// 아무래도 구현관련 조사가 더 필요할듯
 	conn, err := grpc.Dial("localhost:9000", grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
