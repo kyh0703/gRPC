@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package route;
+
+option go_package = "github.com/kyh0703/gRPC/gen/route";
+
+service Route {
+	rpc Device(DeviceRequest) returns (DeviceResponse);
+	rpc Trunk(TrunkRequest) returns (TrunkResponse);
+	rpc Agent(AgentRequest) returns (AgentResponse);
+	rpc Ring(RingRequest) returns (RingResponse);
+	rpc Answer(AnswerRequest) returns (AnswerResponse);
+
+	message DeviceRequest {
+		string call_id = 1;
+	}
+
+	message DeviceResponse {
+		bool result = 1;
+	}
+
+	message TrunkRequest {
+		string call_id = 1;
+	}
+
+	message TrunkResponse {
+		bool result = 1;
+	}
+
+	message AgentRequest {
+		string call_id = 1;
+	}
+
+	message AgentResponse {
+		bool result = 1;
+	}
+
+	message RingRequest {
+		strign call_id = 1;
+	}
+
+	message RingResponse {
+		bool result = 1;
+	}
+
+	message AnswerRequest ;
+		string call_id = 1;
+	}
+
+	message AnswerResponse {
+		bool result = 1;
+	}
+}
