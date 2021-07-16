@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package route;
 
-option go_package = "route";
+option go_package = "./route";
 
 service Route {
 	rpc Device(DeviceRequest) returns (DeviceResponse);
