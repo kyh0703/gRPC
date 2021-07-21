@@ -10,7 +10,7 @@ service call {
 	rpc Transfer(TransferRequest) returns (TransferResponse);
 	rpc MuteTransfer(MuteTransferRequest) returns (MuteTransferResponse);
 	rpc Conference(ConferenceRequest) returns (ConferenceResponse);
-    rpc MuteConference(MuteConferecenRequest) returns (MuteConferenceResponse);
+    rpc MuteConference(MuteConferenceRequest) returns (MuteConferenceResponse);
     rpc Release(ReleaseRequest) returns (ReleaseResponse);
     rpc Route(RouteRequest) returns (RouteResponse);
 }
@@ -25,8 +25,8 @@ message MuteTransferRequest {}
 message MuteTransferResponse {}
 message ConferenceRequest {}
 message ConferenceResponse {}
-message MuteConferecenRequest {}
-message MuteConferecenResponse {}
+message MuteConferenceRequest {}
+message MuteConferenceResponse {}
 message ReleaseRequest {}
 message ReleaseResponse {}
 message RouteRequest {}
