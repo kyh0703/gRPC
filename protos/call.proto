@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package call;
+
+option go_package = "./call";
+
+service call {
+	rpc Make(MakeRequest) returns (MakeResponse);
+	rpc Hold(HoldRequest) returns (HoldResponse);
+	rpc Transfer(TransferRequest) returns (TransferResponse);
+	rpc MuteTransfer(MuteTransferRequest) returns (MuteTransferResponse);
+	rpc Conference(ConferenceRequest) returns (ConferenceResponse);
+    rpc MuteConference(MuteConferecenRequest) returns (MuteConferenceResponse);
+    rpc Release(ReleaseRequest) returns (ReleaseResponse);
+    rpc Route(RouteRequest) returns (RouteResponse);
+}
+
+message MakeRequest {
+    string call_id = 1;
+}
+
+message MakeResponse {
+    bool result = 1;
+}
+
+message HoldRequest {
+    string call_id = 1;
+}
+
+message HoldResponse {
+    bool result = 1;
+}
+
+message TransferRequest {
+    string call_id = 1;
+}
+
+message TransferResponse {
+    bool result = 1;
+}
+
+message MuteTransferRequest {
+    string call_id = 1;
+}
+
+message MuteTransferResponse {
+    bool result = 1;
+}
+
+message AnswerRequest {
+    string call_id = 1;
+}
+
+message AnswerResponse {
+    bool result = 1;
+}
