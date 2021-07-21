@@ -83,6 +83,22 @@ gRPC는 google에서 개발한 오픈소스 RPC(Remote Procedure Call)프레임 
 
 #### 서비스 형태
 
+```protobuf
+service GreetService {
+	//unary
+	rpc Greet(GreetRequest) returns (GreetResponse) {};
+	
+	// Streaming Server
+	rpc GreetManyTimes(GreetManyTimesRequest) Returns (stream GreetManyTimesResponse) {};
+	
+	// Streaming Client
+	rpc LogGreet(stream LongGreetRequest) returns (LongGreetResponse) {};
+	
+	// Bi Directional Streaming
+	rpc GreetEveryone(stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {};
+}
+```
+
 * Unary RPC
 
     클라이언트에서 요청을 보내고 서버에서 응답을 던짐
@@ -99,36 +115,24 @@ gRPC는 google에서 개발한 오픈소스 RPC(Remote Procedure Call)프레임 
 
     클라이언트와 서버가 서로 독립적인 스트림을 주고 받음
 
-## PROTOC 설치
+#### 코딩 시 유의사항
 
-1. 설치 파일 다운로드
+##### interceptor
 
-```bash
-$ wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protobuf-all-3.17.3.tar.gz
-```
+* meddleware들로써 hook과 비슷한 개념으로 before request, after request 처리가능
+* 핸들 실행 전, 실행 후 , 둘다
 
-2. 압축 해제 후 빌드
+##### grpc meddleware의 with unary server chain
 
-```bash
-$ tar xvf protobuf-all-3.17.3.tar.gz
-$ sudo ./configure
-$ sudo make
-$ sudo make check
-$ sudo make install
-```
+* WithUnaryServerChain은 grpc.NewServer의 옵션으로 ``interceptor``를 받을 수 있으나 한개밖에 못 받기에 여러개를 받아 연결하여 하나의 grpc.Unaryinterceptor로 반환하는 syntax sugar가 WithUnaryServerChan함수
+* ChainUnaryServer(one, two , three) 이렇게 있을 때 one -> two -> three순서로 인터셉터가 실행
 
-3. 설치 확인
+##### grpc recovery
 
-```bash
-protoc --version
-```
-
-4. 오류 발생시
-
-```bash
-sudo ldconfig
-protoc --version
-```
+* panic이 났을때 recover 실행
+* recovery 함수를 등록 가능
+* 에러 발생 시 등록된 함수를 실행
+* 없으면 서버가 죽음
 
 ## GRPC 유의사항
 
@@ -158,11 +162,37 @@ $ go get -u github.com/ckaznocha/protoc-gen-lint
 $ protoc --lint_out=. *.proto
 ```
 
+## 실습
 
+1. protoc 설치
 
-## GoLang을 사용한 실습
+```bash
+# protoc 받기
+$ wget https://github.com/protocolbuffers/protobuf/releases/download/v3.17.3/protobuf-all-3.17.3.tar.gz
 
-1. go 의존성 설치
+# tar 해제 후 설치
+$ tar xvf protobuf-all-3.17.3.tar.gz
+$ sudo ./configure
+$ sudo make
+$ sudo make check
+$ sudo make install
+
+# 설치 확인
+$ protoc --version
+
+# 오류 발생시 아래와 같이 재 진행
+sudo ldconfig
+protoc --version
+```
+
+2. Lint 설치
+
+```bash
+$ go get -u github.com/ckaznocha/protoc-gen-lint
+$ protoc --lint_out=. *.proto
+```
+
+3. go 의존성 설치
 
 ```bash
 # grpc import
@@ -170,7 +200,7 @@ $ go get -u google.golang.org/grpc
 $ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
-2. ``.proto `` 파일 작성(IDL 정의)
+4. ``.proto `` 파일 작성(IDL 정의)
 
 ```protobuf
 /*
