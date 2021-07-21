@@ -4,7 +4,7 @@ package call;
 
 option go_package = "./call";
 
-service call {
+service Call {
 	rpc Make(MakeRequest) returns (MakeResponse);
 	rpc Hold(HoldRequest) returns (HoldResponse);
 	rpc Transfer(TransferRequest) returns (TransferResponse);
