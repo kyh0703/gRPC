@@ -5,20 +5,40 @@ package call;
 option go_package = "./call";
 
 service Call {
-	rpc Make(MakeRequest) returns (MakeResponse);
-	rpc Hold(HoldRequest) returns (HoldResponse);
-	rpc Transfer(TransferRequest) returns (TransferResponse);
-	rpc MuteTransfer(MuteTransferRequest) returns (MuteTransferResponse);
-	rpc Conference(ConferenceRequest) returns (ConferenceResponse);
+    rpc Make(MakeRequest) returns (MakeResponse);
+    rpc Hold(HoldRequest) returns (HoldResponse);
+    rpc Retrive(RetriveRequest) returns (RetriveResponse);
+    rpc Transfer(TransferRequest) returns (TransferResponse);
+    rpc MuteTransfer(MuteTransferRequest) returns (MuteTransferRequest);
+    rpc Conference(ConferenceRequest) returns (ConferenceResponse);
     rpc MuteConference(MuteConferenceRequest) returns (MuteConferenceResponse);
     rpc Release(ReleaseRequest) returns (ReleaseResponse);
-    rpc Route(RouteRequest) returns (RouteResponse);
+    rpc Route(RouteRequest) returns (RouteReponse);
+    rpc EventAlerted(EventAlertedRequest) returns (EventAlertedResponse);
+    rpc EventHeld(EventHeldRequest) returns (EventHeldResponse);
+    rpc EventRetrived(EventRetrivedRequest) returns (EventRetrivedResponse);
+    rpc EventTransfered(EventTransferedRequest) returns (EventTransferedReponse);
+    rpc EventConferenced(EventConferencedRequest) returns (EventConferencedResponse);
+    rpc EventConnected(EventConnetedRequest) returns (EventConnectedResponse);
+    rpc EventReleased(EventReleasedRequest) returns (EventReleasedResponse);
 }
 
-message MakeRequest {}
-message MakeResponse {}
+message MakeRequest {
+	string caller = 1;
+	string call_id = 2;
+	string tenant_id = 3;
+	string ani = 4;
+	string dnis = 5;
+}
+
+message MakeResponse {
+	bool result = 1;
+}
+
 message HoldRequest {}
 message HoldResponse {}
+message RetriveRequest {}
+message RetriveResponse {}
 message TransferRequest {}
 message TransferResponse {}
 message MuteTransferRequest {}
@@ -31,3 +51,17 @@ message ReleaseRequest {}
 message ReleaseResponse {}
 message RouteRequest {}
 message RouteResponse {}
+message EventAlertedRequest {}
+message EventAlertedResponse {}
+message EventHeldRequest {}
+message EventHeldResponse {}
+message EventRetrivedRequest {}
+message EventRetrivedResponse {}
+message EventTransferedRequest {}
+message EventTransferedReponse {}
+message EventConferencedRequest {}
+message EventConferencedResponse {}
+message EventConnetedRequest {}
+message EventConnectedResponse {}
+message EventReleasedRequest {}
+message EventReleasedResponse {}
