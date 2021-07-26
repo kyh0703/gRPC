@@ -28,6 +28,12 @@ type MakeRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Caller   string `protobuf:"bytes,1,opt,name=caller,proto3" json:"caller,omitempty"`
+	CallId   string `protobuf:"bytes,2,opt,name=call_id,json=callId,proto3" json:"call_id,omitempty"`
+	TenantId string `protobuf:"bytes,3,opt,name=tenant_id,json=tenantId,proto3" json:"tenant_id,omitempty"`
+	Ani      string `protobuf:"bytes,4,opt,name=ani,proto3" json:"ani,omitempty"`
+	Dnis     string `protobuf:"bytes,5,opt,name=dnis,proto3" json:"dnis,omitempty"`
 }
 
 func (x *MakeRequest) Reset() {
@@ -62,10 +68,47 @@ func (*MakeRequest) Descriptor() ([]byte, []int) {
 	return file_call_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *MakeRequest) GetCaller() string {
+	if x != nil {
+		return x.Caller
+	}
+	return ""
+}
+
+func (x *MakeRequest) GetCallId() string {
+	if x != nil {
+		return x.CallId
+	}
+	return ""
+}
+
+func (x *MakeRequest) GetTenantId() string {
+	if x != nil {
+		return x.TenantId
+	}
+	return ""
+}
+
+func (x *MakeRequest) GetAni() string {
+	if x != nil {
+		return x.Ani
+	}
+	return ""
+}
+
+func (x *MakeRequest) GetDnis() string {
+	if x != nil {
+		return x.Dnis
+	}
+	return ""
+}
+
 type MakeResponse struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
+
+	Result bool `protobuf:"varint,1,opt,name=result,proto3" json:"result,omitempty"`
 }
 
 func (x *MakeResponse) Reset() {
@@ -98,6 +141,13 @@ func (x *MakeResponse) ProtoReflect() protoreflect.Message {
 // Deprecated: Use MakeResponse.ProtoReflect.Descriptor instead.
 func (*MakeResponse) Descriptor() ([]byte, []int) {
 	return file_call_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *MakeResponse) GetResult() bool {
+	if x != nil {
+		return x.Result
+	}
+	return false
 }
 
 type HoldRequest struct {
@@ -176,6 +226,82 @@ func (*HoldResponse) Descriptor() ([]byte, []int) {
 	return file_call_proto_rawDescGZIP(), []int{3}
 }
 
+type RetriveRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RetriveRequest) Reset() {
+	*x = RetriveRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RetriveRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RetriveRequest) ProtoMessage() {}
+
+func (x *RetriveRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RetriveRequest.ProtoReflect.Descriptor instead.
+func (*RetriveRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{4}
+}
+
+type RetriveResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *RetriveResponse) Reset() {
+	*x = RetriveResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *RetriveResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RetriveResponse) ProtoMessage() {}
+
+func (x *RetriveResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RetriveResponse.ProtoReflect.Descriptor instead.
+func (*RetriveResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{5}
+}
+
 type TransferRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -185,7 +311,7 @@ type TransferRequest struct {
 func (x *TransferRequest) Reset() {
 	*x = TransferRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[4]
+		mi := &file_call_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -198,7 +324,7 @@ func (x *TransferRequest) String() string {
 func (*TransferRequest) ProtoMessage() {}
 
 func (x *TransferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[4]
+	mi := &file_call_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -211,7 +337,7 @@ func (x *TransferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferRequest.ProtoReflect.Descriptor instead.
 func (*TransferRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{4}
+	return file_call_proto_rawDescGZIP(), []int{6}
 }
 
 type TransferResponse struct {
@@ -223,7 +349,7 @@ type TransferResponse struct {
 func (x *TransferResponse) Reset() {
 	*x = TransferResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[5]
+		mi := &file_call_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -236,7 +362,7 @@ func (x *TransferResponse) String() string {
 func (*TransferResponse) ProtoMessage() {}
 
 func (x *TransferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[5]
+	mi := &file_call_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -249,7 +375,7 @@ func (x *TransferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TransferResponse.ProtoReflect.Descriptor instead.
 func (*TransferResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{5}
+	return file_call_proto_rawDescGZIP(), []int{7}
 }
 
 type MuteTransferRequest struct {
@@ -261,7 +387,7 @@ type MuteTransferRequest struct {
 func (x *MuteTransferRequest) Reset() {
 	*x = MuteTransferRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[6]
+		mi := &file_call_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -274,7 +400,7 @@ func (x *MuteTransferRequest) String() string {
 func (*MuteTransferRequest) ProtoMessage() {}
 
 func (x *MuteTransferRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[6]
+	mi := &file_call_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -287,7 +413,7 @@ func (x *MuteTransferRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteTransferRequest.ProtoReflect.Descriptor instead.
 func (*MuteTransferRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{6}
+	return file_call_proto_rawDescGZIP(), []int{8}
 }
 
 type MuteTransferResponse struct {
@@ -299,7 +425,7 @@ type MuteTransferResponse struct {
 func (x *MuteTransferResponse) Reset() {
 	*x = MuteTransferResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[7]
+		mi := &file_call_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -312,7 +438,7 @@ func (x *MuteTransferResponse) String() string {
 func (*MuteTransferResponse) ProtoMessage() {}
 
 func (x *MuteTransferResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[7]
+	mi := &file_call_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -325,7 +451,7 @@ func (x *MuteTransferResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteTransferResponse.ProtoReflect.Descriptor instead.
 func (*MuteTransferResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{7}
+	return file_call_proto_rawDescGZIP(), []int{9}
 }
 
 type ConferenceRequest struct {
@@ -337,7 +463,7 @@ type ConferenceRequest struct {
 func (x *ConferenceRequest) Reset() {
 	*x = ConferenceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[8]
+		mi := &file_call_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -350,7 +476,7 @@ func (x *ConferenceRequest) String() string {
 func (*ConferenceRequest) ProtoMessage() {}
 
 func (x *ConferenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[8]
+	mi := &file_call_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -363,7 +489,7 @@ func (x *ConferenceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConferenceRequest.ProtoReflect.Descriptor instead.
 func (*ConferenceRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{8}
+	return file_call_proto_rawDescGZIP(), []int{10}
 }
 
 type ConferenceResponse struct {
@@ -375,7 +501,7 @@ type ConferenceResponse struct {
 func (x *ConferenceResponse) Reset() {
 	*x = ConferenceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[9]
+		mi := &file_call_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -388,7 +514,7 @@ func (x *ConferenceResponse) String() string {
 func (*ConferenceResponse) ProtoMessage() {}
 
 func (x *ConferenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[9]
+	mi := &file_call_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -401,7 +527,7 @@ func (x *ConferenceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ConferenceResponse.ProtoReflect.Descriptor instead.
 func (*ConferenceResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{9}
+	return file_call_proto_rawDescGZIP(), []int{11}
 }
 
 type MuteConferenceRequest struct {
@@ -413,7 +539,7 @@ type MuteConferenceRequest struct {
 func (x *MuteConferenceRequest) Reset() {
 	*x = MuteConferenceRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[10]
+		mi := &file_call_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -426,7 +552,7 @@ func (x *MuteConferenceRequest) String() string {
 func (*MuteConferenceRequest) ProtoMessage() {}
 
 func (x *MuteConferenceRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[10]
+	mi := &file_call_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -439,7 +565,7 @@ func (x *MuteConferenceRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteConferenceRequest.ProtoReflect.Descriptor instead.
 func (*MuteConferenceRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{10}
+	return file_call_proto_rawDescGZIP(), []int{12}
 }
 
 type MuteConferenceResponse struct {
@@ -451,7 +577,7 @@ type MuteConferenceResponse struct {
 func (x *MuteConferenceResponse) Reset() {
 	*x = MuteConferenceResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[11]
+		mi := &file_call_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -464,7 +590,7 @@ func (x *MuteConferenceResponse) String() string {
 func (*MuteConferenceResponse) ProtoMessage() {}
 
 func (x *MuteConferenceResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[11]
+	mi := &file_call_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -477,7 +603,7 @@ func (x *MuteConferenceResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MuteConferenceResponse.ProtoReflect.Descriptor instead.
 func (*MuteConferenceResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{11}
+	return file_call_proto_rawDescGZIP(), []int{13}
 }
 
 type ReleaseRequest struct {
@@ -489,7 +615,7 @@ type ReleaseRequest struct {
 func (x *ReleaseRequest) Reset() {
 	*x = ReleaseRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[12]
+		mi := &file_call_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -502,7 +628,7 @@ func (x *ReleaseRequest) String() string {
 func (*ReleaseRequest) ProtoMessage() {}
 
 func (x *ReleaseRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[12]
+	mi := &file_call_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -515,7 +641,7 @@ func (x *ReleaseRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseRequest.ProtoReflect.Descriptor instead.
 func (*ReleaseRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{12}
+	return file_call_proto_rawDescGZIP(), []int{14}
 }
 
 type ReleaseResponse struct {
@@ -527,7 +653,7 @@ type ReleaseResponse struct {
 func (x *ReleaseResponse) Reset() {
 	*x = ReleaseResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[13]
+		mi := &file_call_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -540,7 +666,7 @@ func (x *ReleaseResponse) String() string {
 func (*ReleaseResponse) ProtoMessage() {}
 
 func (x *ReleaseResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[13]
+	mi := &file_call_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -553,7 +679,7 @@ func (x *ReleaseResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ReleaseResponse.ProtoReflect.Descriptor instead.
 func (*ReleaseResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{13}
+	return file_call_proto_rawDescGZIP(), []int{15}
 }
 
 type RouteRequest struct {
@@ -565,7 +691,7 @@ type RouteRequest struct {
 func (x *RouteRequest) Reset() {
 	*x = RouteRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[14]
+		mi := &file_call_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -578,7 +704,7 @@ func (x *RouteRequest) String() string {
 func (*RouteRequest) ProtoMessage() {}
 
 func (x *RouteRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[14]
+	mi := &file_call_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -591,7 +717,7 @@ func (x *RouteRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RouteRequest.ProtoReflect.Descriptor instead.
 func (*RouteRequest) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{14}
+	return file_call_proto_rawDescGZIP(), []int{16}
 }
 
 type RouteResponse struct {
@@ -603,7 +729,7 @@ type RouteResponse struct {
 func (x *RouteResponse) Reset() {
 	*x = RouteResponse{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_call_proto_msgTypes[15]
+		mi := &file_call_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -616,7 +742,7 @@ func (x *RouteResponse) String() string {
 func (*RouteResponse) ProtoMessage() {}
 
 func (x *RouteResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_call_proto_msgTypes[15]
+	mi := &file_call_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -629,48 +755,616 @@ func (x *RouteResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use RouteResponse.ProtoReflect.Descriptor instead.
 func (*RouteResponse) Descriptor() ([]byte, []int) {
-	return file_call_proto_rawDescGZIP(), []int{15}
+	return file_call_proto_rawDescGZIP(), []int{17}
+}
+
+type EventAlertedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventAlertedRequest) Reset() {
+	*x = EventAlertedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[18]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventAlertedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventAlertedRequest) ProtoMessage() {}
+
+func (x *EventAlertedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[18]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventAlertedRequest.ProtoReflect.Descriptor instead.
+func (*EventAlertedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{18}
+}
+
+type EventAlertedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventAlertedResponse) Reset() {
+	*x = EventAlertedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[19]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventAlertedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventAlertedResponse) ProtoMessage() {}
+
+func (x *EventAlertedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[19]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventAlertedResponse.ProtoReflect.Descriptor instead.
+func (*EventAlertedResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{19}
+}
+
+type EventHeldRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventHeldRequest) Reset() {
+	*x = EventHeldRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[20]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventHeldRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventHeldRequest) ProtoMessage() {}
+
+func (x *EventHeldRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[20]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventHeldRequest.ProtoReflect.Descriptor instead.
+func (*EventHeldRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{20}
+}
+
+type EventHeldResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventHeldResponse) Reset() {
+	*x = EventHeldResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[21]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventHeldResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventHeldResponse) ProtoMessage() {}
+
+func (x *EventHeldResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[21]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventHeldResponse.ProtoReflect.Descriptor instead.
+func (*EventHeldResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{21}
+}
+
+type EventRetrivedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventRetrivedRequest) Reset() {
+	*x = EventRetrivedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[22]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventRetrivedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventRetrivedRequest) ProtoMessage() {}
+
+func (x *EventRetrivedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[22]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventRetrivedRequest.ProtoReflect.Descriptor instead.
+func (*EventRetrivedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{22}
+}
+
+type EventRetrivedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventRetrivedResponse) Reset() {
+	*x = EventRetrivedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[23]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventRetrivedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventRetrivedResponse) ProtoMessage() {}
+
+func (x *EventRetrivedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[23]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventRetrivedResponse.ProtoReflect.Descriptor instead.
+func (*EventRetrivedResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{23}
+}
+
+type EventTransferedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventTransferedRequest) Reset() {
+	*x = EventTransferedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[24]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventTransferedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventTransferedRequest) ProtoMessage() {}
+
+func (x *EventTransferedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[24]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventTransferedRequest.ProtoReflect.Descriptor instead.
+func (*EventTransferedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{24}
+}
+
+type EventTransferedReponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventTransferedReponse) Reset() {
+	*x = EventTransferedReponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[25]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventTransferedReponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventTransferedReponse) ProtoMessage() {}
+
+func (x *EventTransferedReponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[25]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventTransferedReponse.ProtoReflect.Descriptor instead.
+func (*EventTransferedReponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{25}
+}
+
+type EventConferencedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventConferencedRequest) Reset() {
+	*x = EventConferencedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[26]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventConferencedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventConferencedRequest) ProtoMessage() {}
+
+func (x *EventConferencedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[26]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventConferencedRequest.ProtoReflect.Descriptor instead.
+func (*EventConferencedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{26}
+}
+
+type EventConferencedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventConferencedResponse) Reset() {
+	*x = EventConferencedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[27]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventConferencedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventConferencedResponse) ProtoMessage() {}
+
+func (x *EventConferencedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[27]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventConferencedResponse.ProtoReflect.Descriptor instead.
+func (*EventConferencedResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{27}
+}
+
+type EventConnetedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventConnetedRequest) Reset() {
+	*x = EventConnetedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[28]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventConnetedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventConnetedRequest) ProtoMessage() {}
+
+func (x *EventConnetedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[28]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventConnetedRequest.ProtoReflect.Descriptor instead.
+func (*EventConnetedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{28}
+}
+
+type EventConnectedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventConnectedResponse) Reset() {
+	*x = EventConnectedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[29]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventConnectedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventConnectedResponse) ProtoMessage() {}
+
+func (x *EventConnectedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[29]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventConnectedResponse.ProtoReflect.Descriptor instead.
+func (*EventConnectedResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{29}
+}
+
+type EventReleasedRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventReleasedRequest) Reset() {
+	*x = EventReleasedRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[30]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventReleasedRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventReleasedRequest) ProtoMessage() {}
+
+func (x *EventReleasedRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[30]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventReleasedRequest.ProtoReflect.Descriptor instead.
+func (*EventReleasedRequest) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{30}
+}
+
+type EventReleasedResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+}
+
+func (x *EventReleasedResponse) Reset() {
+	*x = EventReleasedResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_call_proto_msgTypes[31]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EventReleasedResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EventReleasedResponse) ProtoMessage() {}
+
+func (x *EventReleasedResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_call_proto_msgTypes[31]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EventReleasedResponse.ProtoReflect.Descriptor instead.
+func (*EventReleasedResponse) Descriptor() ([]byte, []int) {
+	return file_call_proto_rawDescGZIP(), []int{31}
 }
 
 var File_call_proto protoreflect.FileDescriptor
 
 var file_call_proto_rawDesc = []byte{
 	0x0a, 0x0a, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x04, 0x63, 0x61,
-	0x6c, 0x6c, 0x22, 0x0d, 0x0a, 0x0b, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x22, 0x0e, 0x0a, 0x0c, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x0d, 0x0a, 0x0b, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x22, 0x0e, 0x0a, 0x0c, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
-	0x22, 0x11, 0x0a, 0x0f, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
-	0x65, 0x73, 0x74, 0x22, 0x12, 0x0a, 0x10, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52,
-	0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a, 0x13, 0x4d, 0x75, 0x74, 0x65, 0x54,
-	0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x16,
-	0x0a, 0x14, 0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x13, 0x0a, 0x11, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72,
-	0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x14, 0x0a, 0x12, 0x43,
-	0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x17, 0x0a, 0x15, 0x4d, 0x75, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65,
-	0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x18, 0x0a, 0x16, 0x4d, 0x75,
-	0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x10, 0x0a, 0x0e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x11, 0x0a, 0x0f, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x0e, 0x0a, 0x0c, 0x52, 0x6f, 0x75,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x0f, 0x0a, 0x0d, 0x52, 0x6f, 0x75,
-	0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x32, 0xde, 0x03, 0x0a, 0x04, 0x43,
-	0x61, 0x6c, 0x6c, 0x12, 0x2d, 0x0a, 0x04, 0x4d, 0x61, 0x6b, 0x65, 0x12, 0x11, 0x2e, 0x63, 0x61,
-	0x6c, 0x6c, 0x2e, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12,
-	0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
-	0x73, 0x65, 0x12, 0x2d, 0x0a, 0x04, 0x48, 0x6f, 0x6c, 0x64, 0x12, 0x11, 0x2e, 0x63, 0x61, 0x6c,
-	0x6c, 0x2e, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e,
-	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x12, 0x39, 0x0a, 0x08, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x12, 0x15, 0x2e,
-	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x71,
-	0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x54, 0x72, 0x61, 0x6e,
-	0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x45, 0x0a, 0x0c,
-	0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x12, 0x19, 0x2e, 0x63,
-	0x61, 0x6c, 0x6c, 0x2e, 0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72,
-	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x4d,
-	0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f,
-	0x6e, 0x73, 0x65, 0x12, 0x3f, 0x0a, 0x0a, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63,
+	0x6c, 0x6c, 0x22, 0x81, 0x01, 0x0a, 0x0b, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x63, 0x61, 0x6c, 0x6c, 0x65, 0x72, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x06, 0x63, 0x61, 0x6c, 0x6c, 0x65, 0x72, 0x12, 0x17, 0x0a, 0x07, 0x63, 0x61,
+	0x6c, 0x6c, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x63, 0x61, 0x6c,
+	0x6c, 0x49, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x5f, 0x69, 0x64,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x49, 0x64,
+	0x12, 0x10, 0x0a, 0x03, 0x61, 0x6e, 0x69, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x61,
+	0x6e, 0x69, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x6e, 0x69, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x64, 0x6e, 0x69, 0x73, 0x22, 0x26, 0x0a, 0x0c, 0x4d, 0x61, 0x6b, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x08, 0x52, 0x06, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x22, 0x0d,
+	0x0a, 0x0b, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x0e, 0x0a,
+	0x0c, 0x48, 0x6f, 0x6c, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x10, 0x0a,
+	0x0e, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
+	0x11, 0x0a, 0x0f, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x11, 0x0a, 0x0f, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x12, 0x0a, 0x10, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65,
+	0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a, 0x13, 0x4d, 0x75, 0x74,
+	0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x22, 0x16, 0x0a, 0x14, 0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x13, 0x0a, 0x11, 0x43, 0x6f, 0x6e, 0x66,
+	0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x14, 0x0a,
+	0x12, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x17, 0x0a, 0x15, 0x4d, 0x75, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x65,
+	0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x18, 0x0a, 0x16,
+	0x4d, 0x75, 0x74, 0x65, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65,
+	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x10, 0x0a, 0x0e, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73,
+	0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x11, 0x0a, 0x0f, 0x52, 0x65, 0x6c, 0x65,
+	0x61, 0x73, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x0e, 0x0a, 0x0c, 0x52,
+	0x6f, 0x75, 0x74, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x0f, 0x0a, 0x0d, 0x52,
+	0x6f, 0x75, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x15, 0x0a, 0x13,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x41, 0x6c, 0x65, 0x72, 0x74, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x22, 0x16, 0x0a, 0x14, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x41, 0x6c, 0x65, 0x72,
+	0x74, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x12, 0x0a, 0x10, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
+	0x13, 0x0a, 0x11, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x73, 0x70,
+	0x6f, 0x6e, 0x73, 0x65, 0x22, 0x16, 0x0a, 0x14, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x74,
+	0x72, 0x69, 0x76, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x17, 0x0a, 0x15,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76, 0x65, 0x64, 0x52, 0x65, 0x73,
+	0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x18, 0x0a, 0x16, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x72,
+	0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22,
+	0x18, 0x0a, 0x16, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72,
+	0x65, 0x64, 0x52, 0x65, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x19, 0x0a, 0x17, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x64, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x22, 0x1a, 0x0a, 0x18, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e,
+	0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x22, 0x16, 0x0a, 0x14, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x74, 0x65,
+	0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x18, 0x0a, 0x16, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x22, 0x16, 0x0a, 0x14, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x6c, 0x65, 0x61,
+	0x73, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x22, 0x17, 0x0a, 0x15, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x32, 0x9c, 0x08, 0x0a, 0x04, 0x43, 0x61, 0x6c, 0x6c, 0x12, 0x2d, 0x0a, 0x04,
+	0x4d, 0x61, 0x6b, 0x65, 0x12, 0x11, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x4d, 0x61, 0x6b, 0x65,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x4d,
+	0x61, 0x6b, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x2d, 0x0a, 0x04, 0x48,
+	0x6f, 0x6c, 0x64, 0x12, 0x11, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x48, 0x6f, 0x6c, 0x64, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x48, 0x6f,
+	0x6c, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x36, 0x0a, 0x07, 0x52, 0x65,
+	0x74, 0x72, 0x69, 0x76, 0x65, 0x12, 0x14, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x52, 0x65, 0x74,
+	0x72, 0x69, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x15, 0x2e, 0x63, 0x61,
+	0x6c, 0x6c, 0x2e, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x39, 0x0a, 0x08, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x12, 0x15,
+	0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x54, 0x72, 0x61,
+	0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x44, 0x0a,
+	0x0c, 0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x12, 0x19, 0x2e,
+	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65,
+	0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x19, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e,
+	0x4d, 0x75, 0x74, 0x65, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x3f, 0x0a, 0x0a, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63,
 	0x65, 0x12, 0x17, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65,
 	0x6e, 0x63, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x18, 0x2e, 0x63, 0x61, 0x6c,
 	0x6c, 0x2e, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x65, 0x73, 0x70,
@@ -685,8 +1379,41 @@ var file_call_proto_rawDesc = []byte{
 	0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x30, 0x0a, 0x05, 0x52, 0x6f, 0x75,
 	0x74, 0x65, 0x12, 0x12, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x52, 0x6f, 0x75, 0x74, 0x65, 0x52,
 	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x13, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x52, 0x6f,
-	0x75, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x08, 0x5a, 0x06, 0x2e,
-	0x2f, 0x63, 0x61, 0x6c, 0x6c, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x75, 0x74, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x45, 0x0a, 0x0c, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x41, 0x6c, 0x65, 0x72, 0x74, 0x65, 0x64, 0x12, 0x19, 0x2e, 0x63, 0x61,
+	0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x41, 0x6c, 0x65, 0x72, 0x74, 0x65, 0x64, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x41, 0x6c, 0x65, 0x72, 0x74, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x3c, 0x0a, 0x09, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x6c, 0x64, 0x12,
+	0x16, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x6c, 0x64,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45,
+	0x76, 0x65, 0x6e, 0x74, 0x48, 0x65, 0x6c, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x48, 0x0a, 0x0d, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76, 0x65,
+	0x64, 0x12, 0x1a, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65,
+	0x74, 0x72, 0x69, 0x76, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e,
+	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x74, 0x72, 0x69, 0x76,
+	0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4d, 0x0a, 0x0f, 0x45, 0x76,
+	0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72, 0x65, 0x64, 0x12, 0x1c, 0x2e,
+	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66,
+	0x65, 0x72, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x63, 0x61,
+	0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x54, 0x72, 0x61, 0x6e, 0x73, 0x66, 0x65, 0x72,
+	0x65, 0x64, 0x52, 0x65, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x51, 0x0a, 0x10, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x64, 0x12, 0x1d, 0x2e,
+	0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72,
+	0x65, 0x6e, 0x63, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x63,
+	0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x66, 0x65, 0x72, 0x65,
+	0x6e, 0x63, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x4a, 0x0a, 0x0e,
+	0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64, 0x12, 0x1a,
+	0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x6e, 0x65,
+	0x74, 0x65, 0x64, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x63, 0x61, 0x6c,
+	0x6c, 0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x43, 0x6f, 0x6e, 0x6e, 0x65, 0x63, 0x74, 0x65, 0x64,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x48, 0x0a, 0x0d, 0x45, 0x76, 0x65, 0x6e,
+	0x74, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x64, 0x12, 0x1a, 0x2e, 0x63, 0x61, 0x6c, 0x6c,
+	0x2e, 0x45, 0x76, 0x65, 0x6e, 0x74, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x64, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x63, 0x61, 0x6c, 0x6c, 0x2e, 0x45, 0x76, 0x65,
+	0x6e, 0x74, 0x52, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x64, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x42, 0x08, 0x5a, 0x06, 0x2e, 0x2f, 0x63, 0x61, 0x6c, 0x6c, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -701,44 +1428,76 @@ func file_call_proto_rawDescGZIP() []byte {
 	return file_call_proto_rawDescData
 }
 
-var file_call_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
+var file_call_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
 var file_call_proto_goTypes = []interface{}{
-	(*MakeRequest)(nil),            // 0: call.MakeRequest
-	(*MakeResponse)(nil),           // 1: call.MakeResponse
-	(*HoldRequest)(nil),            // 2: call.HoldRequest
-	(*HoldResponse)(nil),           // 3: call.HoldResponse
-	(*TransferRequest)(nil),        // 4: call.TransferRequest
-	(*TransferResponse)(nil),       // 5: call.TransferResponse
-	(*MuteTransferRequest)(nil),    // 6: call.MuteTransferRequest
-	(*MuteTransferResponse)(nil),   // 7: call.MuteTransferResponse
-	(*ConferenceRequest)(nil),      // 8: call.ConferenceRequest
-	(*ConferenceResponse)(nil),     // 9: call.ConferenceResponse
-	(*MuteConferenceRequest)(nil),  // 10: call.MuteConferenceRequest
-	(*MuteConferenceResponse)(nil), // 11: call.MuteConferenceResponse
-	(*ReleaseRequest)(nil),         // 12: call.ReleaseRequest
-	(*ReleaseResponse)(nil),        // 13: call.ReleaseResponse
-	(*RouteRequest)(nil),           // 14: call.RouteRequest
-	(*RouteResponse)(nil),          // 15: call.RouteResponse
+	(*MakeRequest)(nil),              // 0: call.MakeRequest
+	(*MakeResponse)(nil),             // 1: call.MakeResponse
+	(*HoldRequest)(nil),              // 2: call.HoldRequest
+	(*HoldResponse)(nil),             // 3: call.HoldResponse
+	(*RetriveRequest)(nil),           // 4: call.RetriveRequest
+	(*RetriveResponse)(nil),          // 5: call.RetriveResponse
+	(*TransferRequest)(nil),          // 6: call.TransferRequest
+	(*TransferResponse)(nil),         // 7: call.TransferResponse
+	(*MuteTransferRequest)(nil),      // 8: call.MuteTransferRequest
+	(*MuteTransferResponse)(nil),     // 9: call.MuteTransferResponse
+	(*ConferenceRequest)(nil),        // 10: call.ConferenceRequest
+	(*ConferenceResponse)(nil),       // 11: call.ConferenceResponse
+	(*MuteConferenceRequest)(nil),    // 12: call.MuteConferenceRequest
+	(*MuteConferenceResponse)(nil),   // 13: call.MuteConferenceResponse
+	(*ReleaseRequest)(nil),           // 14: call.ReleaseRequest
+	(*ReleaseResponse)(nil),          // 15: call.ReleaseResponse
+	(*RouteRequest)(nil),             // 16: call.RouteRequest
+	(*RouteResponse)(nil),            // 17: call.RouteResponse
+	(*EventAlertedRequest)(nil),      // 18: call.EventAlertedRequest
+	(*EventAlertedResponse)(nil),     // 19: call.EventAlertedResponse
+	(*EventHeldRequest)(nil),         // 20: call.EventHeldRequest
+	(*EventHeldResponse)(nil),        // 21: call.EventHeldResponse
+	(*EventRetrivedRequest)(nil),     // 22: call.EventRetrivedRequest
+	(*EventRetrivedResponse)(nil),    // 23: call.EventRetrivedResponse
+	(*EventTransferedRequest)(nil),   // 24: call.EventTransferedRequest
+	(*EventTransferedReponse)(nil),   // 25: call.EventTransferedReponse
+	(*EventConferencedRequest)(nil),  // 26: call.EventConferencedRequest
+	(*EventConferencedResponse)(nil), // 27: call.EventConferencedResponse
+	(*EventConnetedRequest)(nil),     // 28: call.EventConnetedRequest
+	(*EventConnectedResponse)(nil),   // 29: call.EventConnectedResponse
+	(*EventReleasedRequest)(nil),     // 30: call.EventReleasedRequest
+	(*EventReleasedResponse)(nil),    // 31: call.EventReleasedResponse
 }
 var file_call_proto_depIdxs = []int32{
 	0,  // 0: call.Call.Make:input_type -> call.MakeRequest
 	2,  // 1: call.Call.Hold:input_type -> call.HoldRequest
-	4,  // 2: call.Call.Transfer:input_type -> call.TransferRequest
-	6,  // 3: call.Call.MuteTransfer:input_type -> call.MuteTransferRequest
-	8,  // 4: call.Call.Conference:input_type -> call.ConferenceRequest
-	10, // 5: call.Call.MuteConference:input_type -> call.MuteConferenceRequest
-	12, // 6: call.Call.Release:input_type -> call.ReleaseRequest
-	14, // 7: call.Call.Route:input_type -> call.RouteRequest
-	1,  // 8: call.Call.Make:output_type -> call.MakeResponse
-	3,  // 9: call.Call.Hold:output_type -> call.HoldResponse
-	5,  // 10: call.Call.Transfer:output_type -> call.TransferResponse
-	7,  // 11: call.Call.MuteTransfer:output_type -> call.MuteTransferResponse
-	9,  // 12: call.Call.Conference:output_type -> call.ConferenceResponse
-	11, // 13: call.Call.MuteConference:output_type -> call.MuteConferenceResponse
-	13, // 14: call.Call.Release:output_type -> call.ReleaseResponse
-	15, // 15: call.Call.Route:output_type -> call.RouteResponse
-	8,  // [8:16] is the sub-list for method output_type
-	0,  // [0:8] is the sub-list for method input_type
+	4,  // 2: call.Call.Retrive:input_type -> call.RetriveRequest
+	6,  // 3: call.Call.Transfer:input_type -> call.TransferRequest
+	8,  // 4: call.Call.MuteTransfer:input_type -> call.MuteTransferRequest
+	10, // 5: call.Call.Conference:input_type -> call.ConferenceRequest
+	12, // 6: call.Call.MuteConference:input_type -> call.MuteConferenceRequest
+	14, // 7: call.Call.Release:input_type -> call.ReleaseRequest
+	16, // 8: call.Call.Route:input_type -> call.RouteRequest
+	18, // 9: call.Call.EventAlerted:input_type -> call.EventAlertedRequest
+	20, // 10: call.Call.EventHeld:input_type -> call.EventHeldRequest
+	22, // 11: call.Call.EventRetrived:input_type -> call.EventRetrivedRequest
+	24, // 12: call.Call.EventTransfered:input_type -> call.EventTransferedRequest
+	26, // 13: call.Call.EventConferenced:input_type -> call.EventConferencedRequest
+	28, // 14: call.Call.EventConnected:input_type -> call.EventConnetedRequest
+	30, // 15: call.Call.EventReleased:input_type -> call.EventReleasedRequest
+	1,  // 16: call.Call.Make:output_type -> call.MakeResponse
+	3,  // 17: call.Call.Hold:output_type -> call.HoldResponse
+	5,  // 18: call.Call.Retrive:output_type -> call.RetriveResponse
+	7,  // 19: call.Call.Transfer:output_type -> call.TransferResponse
+	8,  // 20: call.Call.MuteTransfer:output_type -> call.MuteTransferRequest
+	11, // 21: call.Call.Conference:output_type -> call.ConferenceResponse
+	13, // 22: call.Call.MuteConference:output_type -> call.MuteConferenceResponse
+	15, // 23: call.Call.Release:output_type -> call.ReleaseResponse
+	17, // 24: call.Call.Route:output_type -> call.RouteResponse
+	19, // 25: call.Call.EventAlerted:output_type -> call.EventAlertedResponse
+	21, // 26: call.Call.EventHeld:output_type -> call.EventHeldResponse
+	23, // 27: call.Call.EventRetrived:output_type -> call.EventRetrivedResponse
+	25, // 28: call.Call.EventTransfered:output_type -> call.EventTransferedReponse
+	27, // 29: call.Call.EventConferenced:output_type -> call.EventConferencedResponse
+	29, // 30: call.Call.EventConnected:output_type -> call.EventConnectedResponse
+	31, // 31: call.Call.EventReleased:output_type -> call.EventReleasedResponse
+	16, // [16:32] is the sub-list for method output_type
+	0,  // [0:16] is the sub-list for method input_type
 	0,  // [0:0] is the sub-list for extension type_name
 	0,  // [0:0] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
@@ -799,7 +1558,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransferRequest); i {
+			switch v := v.(*RetriveRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -811,7 +1570,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*TransferResponse); i {
+			switch v := v.(*RetriveResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -823,7 +1582,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteTransferRequest); i {
+			switch v := v.(*TransferRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -835,7 +1594,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteTransferResponse); i {
+			switch v := v.(*TransferResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -847,7 +1606,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ConferenceRequest); i {
+			switch v := v.(*MuteTransferRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -859,7 +1618,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ConferenceResponse); i {
+			switch v := v.(*MuteTransferResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -871,7 +1630,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteConferenceRequest); i {
+			switch v := v.(*ConferenceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -883,7 +1642,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MuteConferenceResponse); i {
+			switch v := v.(*ConferenceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -895,7 +1654,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReleaseRequest); i {
+			switch v := v.(*MuteConferenceRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -907,7 +1666,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ReleaseResponse); i {
+			switch v := v.(*MuteConferenceResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -919,7 +1678,7 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RouteRequest); i {
+			switch v := v.(*ReleaseRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -931,7 +1690,199 @@ func file_call_proto_init() {
 			}
 		}
 		file_call_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ReleaseResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*RouteRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RouteResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventAlertedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventAlertedResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventHeldRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventHeldResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventRetrivedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventRetrivedResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventTransferedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventTransferedReponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventConferencedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventConferencedResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventConnetedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventConnectedResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventReleasedRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_call_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EventReleasedResponse); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -949,7 +1900,7 @@ func file_call_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_call_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   16,
+			NumMessages:   32,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -977,12 +1928,20 @@ const _ = grpc.SupportPackageIsVersion6
 type CallClient interface {
 	Make(ctx context.Context, in *MakeRequest, opts ...grpc.CallOption) (*MakeResponse, error)
 	Hold(ctx context.Context, in *HoldRequest, opts ...grpc.CallOption) (*HoldResponse, error)
+	Retrive(ctx context.Context, in *RetriveRequest, opts ...grpc.CallOption) (*RetriveResponse, error)
 	Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error)
-	MuteTransfer(ctx context.Context, in *MuteTransferRequest, opts ...grpc.CallOption) (*MuteTransferResponse, error)
+	MuteTransfer(ctx context.Context, in *MuteTransferRequest, opts ...grpc.CallOption) (*MuteTransferRequest, error)
 	Conference(ctx context.Context, in *ConferenceRequest, opts ...grpc.CallOption) (*ConferenceResponse, error)
 	MuteConference(ctx context.Context, in *MuteConferenceRequest, opts ...grpc.CallOption) (*MuteConferenceResponse, error)
 	Release(ctx context.Context, in *ReleaseRequest, opts ...grpc.CallOption) (*ReleaseResponse, error)
 	Route(ctx context.Context, in *RouteRequest, opts ...grpc.CallOption) (*RouteResponse, error)
+	EventAlerted(ctx context.Context, in *EventAlertedRequest, opts ...grpc.CallOption) (*EventAlertedResponse, error)
+	EventHeld(ctx context.Context, in *EventHeldRequest, opts ...grpc.CallOption) (*EventHeldResponse, error)
+	EventRetrived(ctx context.Context, in *EventRetrivedRequest, opts ...grpc.CallOption) (*EventRetrivedResponse, error)
+	EventTransfered(ctx context.Context, in *EventTransferedRequest, opts ...grpc.CallOption) (*EventTransferedReponse, error)
+	EventConferenced(ctx context.Context, in *EventConferencedRequest, opts ...grpc.CallOption) (*EventConferencedResponse, error)
+	EventConnected(ctx context.Context, in *EventConnetedRequest, opts ...grpc.CallOption) (*EventConnectedResponse, error)
+	EventReleased(ctx context.Context, in *EventReleasedRequest, opts ...grpc.CallOption) (*EventReleasedResponse, error)
 }
 
 type callClient struct {
@@ -1011,6 +1970,15 @@ func (c *callClient) Hold(ctx context.Context, in *HoldRequest, opts ...grpc.Cal
 	return out, nil
 }
 
+func (c *callClient) Retrive(ctx context.Context, in *RetriveRequest, opts ...grpc.CallOption) (*RetriveResponse, error) {
+	out := new(RetriveResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/Retrive", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *callClient) Transfer(ctx context.Context, in *TransferRequest, opts ...grpc.CallOption) (*TransferResponse, error) {
 	out := new(TransferResponse)
 	err := c.cc.Invoke(ctx, "/call.Call/Transfer", in, out, opts...)
@@ -1020,8 +1988,8 @@ func (c *callClient) Transfer(ctx context.Context, in *TransferRequest, opts ...
 	return out, nil
 }
 
-func (c *callClient) MuteTransfer(ctx context.Context, in *MuteTransferRequest, opts ...grpc.CallOption) (*MuteTransferResponse, error) {
-	out := new(MuteTransferResponse)
+func (c *callClient) MuteTransfer(ctx context.Context, in *MuteTransferRequest, opts ...grpc.CallOption) (*MuteTransferRequest, error) {
+	out := new(MuteTransferRequest)
 	err := c.cc.Invoke(ctx, "/call.Call/MuteTransfer", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1065,16 +2033,87 @@ func (c *callClient) Route(ctx context.Context, in *RouteRequest, opts ...grpc.C
 	return out, nil
 }
 
+func (c *callClient) EventAlerted(ctx context.Context, in *EventAlertedRequest, opts ...grpc.CallOption) (*EventAlertedResponse, error) {
+	out := new(EventAlertedResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventAlerted", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventHeld(ctx context.Context, in *EventHeldRequest, opts ...grpc.CallOption) (*EventHeldResponse, error) {
+	out := new(EventHeldResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventHeld", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventRetrived(ctx context.Context, in *EventRetrivedRequest, opts ...grpc.CallOption) (*EventRetrivedResponse, error) {
+	out := new(EventRetrivedResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventRetrived", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventTransfered(ctx context.Context, in *EventTransferedRequest, opts ...grpc.CallOption) (*EventTransferedReponse, error) {
+	out := new(EventTransferedReponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventTransfered", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventConferenced(ctx context.Context, in *EventConferencedRequest, opts ...grpc.CallOption) (*EventConferencedResponse, error) {
+	out := new(EventConferencedResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventConferenced", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventConnected(ctx context.Context, in *EventConnetedRequest, opts ...grpc.CallOption) (*EventConnectedResponse, error) {
+	out := new(EventConnectedResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventConnected", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *callClient) EventReleased(ctx context.Context, in *EventReleasedRequest, opts ...grpc.CallOption) (*EventReleasedResponse, error) {
+	out := new(EventReleasedResponse)
+	err := c.cc.Invoke(ctx, "/call.Call/EventReleased", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CallServer is the server API for Call service.
 type CallServer interface {
 	Make(context.Context, *MakeRequest) (*MakeResponse, error)
 	Hold(context.Context, *HoldRequest) (*HoldResponse, error)
+	Retrive(context.Context, *RetriveRequest) (*RetriveResponse, error)
 	Transfer(context.Context, *TransferRequest) (*TransferResponse, error)
-	MuteTransfer(context.Context, *MuteTransferRequest) (*MuteTransferResponse, error)
+	MuteTransfer(context.Context, *MuteTransferRequest) (*MuteTransferRequest, error)
 	Conference(context.Context, *ConferenceRequest) (*ConferenceResponse, error)
 	MuteConference(context.Context, *MuteConferenceRequest) (*MuteConferenceResponse, error)
 	Release(context.Context, *ReleaseRequest) (*ReleaseResponse, error)
 	Route(context.Context, *RouteRequest) (*RouteResponse, error)
+	EventAlerted(context.Context, *EventAlertedRequest) (*EventAlertedResponse, error)
+	EventHeld(context.Context, *EventHeldRequest) (*EventHeldResponse, error)
+	EventRetrived(context.Context, *EventRetrivedRequest) (*EventRetrivedResponse, error)
+	EventTransfered(context.Context, *EventTransferedRequest) (*EventTransferedReponse, error)
+	EventConferenced(context.Context, *EventConferencedRequest) (*EventConferencedResponse, error)
+	EventConnected(context.Context, *EventConnetedRequest) (*EventConnectedResponse, error)
+	EventReleased(context.Context, *EventReleasedRequest) (*EventReleasedResponse, error)
 }
 
 // UnimplementedCallServer can be embedded to have forward compatible implementations.
@@ -1087,10 +2126,13 @@ func (*UnimplementedCallServer) Make(context.Context, *MakeRequest) (*MakeRespon
 func (*UnimplementedCallServer) Hold(context.Context, *HoldRequest) (*HoldResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Hold not implemented")
 }
+func (*UnimplementedCallServer) Retrive(context.Context, *RetriveRequest) (*RetriveResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Retrive not implemented")
+}
 func (*UnimplementedCallServer) Transfer(context.Context, *TransferRequest) (*TransferResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Transfer not implemented")
 }
-func (*UnimplementedCallServer) MuteTransfer(context.Context, *MuteTransferRequest) (*MuteTransferResponse, error) {
+func (*UnimplementedCallServer) MuteTransfer(context.Context, *MuteTransferRequest) (*MuteTransferRequest, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MuteTransfer not implemented")
 }
 func (*UnimplementedCallServer) Conference(context.Context, *ConferenceRequest) (*ConferenceResponse, error) {
@@ -1104,6 +2146,27 @@ func (*UnimplementedCallServer) Release(context.Context, *ReleaseRequest) (*Rele
 }
 func (*UnimplementedCallServer) Route(context.Context, *RouteRequest) (*RouteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Route not implemented")
+}
+func (*UnimplementedCallServer) EventAlerted(context.Context, *EventAlertedRequest) (*EventAlertedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventAlerted not implemented")
+}
+func (*UnimplementedCallServer) EventHeld(context.Context, *EventHeldRequest) (*EventHeldResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventHeld not implemented")
+}
+func (*UnimplementedCallServer) EventRetrived(context.Context, *EventRetrivedRequest) (*EventRetrivedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventRetrived not implemented")
+}
+func (*UnimplementedCallServer) EventTransfered(context.Context, *EventTransferedRequest) (*EventTransferedReponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventTransfered not implemented")
+}
+func (*UnimplementedCallServer) EventConferenced(context.Context, *EventConferencedRequest) (*EventConferencedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventConferenced not implemented")
+}
+func (*UnimplementedCallServer) EventConnected(context.Context, *EventConnetedRequest) (*EventConnectedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventConnected not implemented")
+}
+func (*UnimplementedCallServer) EventReleased(context.Context, *EventReleasedRequest) (*EventReleasedResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EventReleased not implemented")
 }
 
 func RegisterCallServer(s *grpc.Server, srv CallServer) {
@@ -1142,6 +2205,24 @@ func _Call_Hold_Handler(srv interface{}, ctx context.Context, dec func(interface
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(CallServer).Hold(ctx, req.(*HoldRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_Retrive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RetriveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).Retrive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/Retrive",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).Retrive(ctx, req.(*RetriveRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1254,6 +2335,132 @@ func _Call_Route_Handler(srv interface{}, ctx context.Context, dec func(interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Call_EventAlerted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventAlertedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventAlerted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventAlerted",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventAlerted(ctx, req.(*EventAlertedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventHeld_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventHeldRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventHeld(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventHeld",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventHeld(ctx, req.(*EventHeldRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventRetrived_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventRetrivedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventRetrived(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventRetrived",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventRetrived(ctx, req.(*EventRetrivedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventTransfered_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventTransferedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventTransfered(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventTransfered",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventTransfered(ctx, req.(*EventTransferedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventConferenced_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventConferencedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventConferenced(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventConferenced",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventConferenced(ctx, req.(*EventConferencedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventConnected_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventConnetedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventConnected(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventConnected",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventConnected(ctx, req.(*EventConnetedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Call_EventReleased_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EventReleasedRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CallServer).EventReleased(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/call.Call/EventReleased",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CallServer).EventReleased(ctx, req.(*EventReleasedRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Call_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "call.Call",
 	HandlerType: (*CallServer)(nil),
@@ -1265,6 +2472,10 @@ var _Call_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Hold",
 			Handler:    _Call_Hold_Handler,
+		},
+		{
+			MethodName: "Retrive",
+			Handler:    _Call_Retrive_Handler,
 		},
 		{
 			MethodName: "Transfer",
@@ -1289,6 +2500,34 @@ var _Call_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Route",
 			Handler:    _Call_Route_Handler,
+		},
+		{
+			MethodName: "EventAlerted",
+			Handler:    _Call_EventAlerted_Handler,
+		},
+		{
+			MethodName: "EventHeld",
+			Handler:    _Call_EventHeld_Handler,
+		},
+		{
+			MethodName: "EventRetrived",
+			Handler:    _Call_EventRetrived_Handler,
+		},
+		{
+			MethodName: "EventTransfered",
+			Handler:    _Call_EventTransfered_Handler,
+		},
+		{
+			MethodName: "EventConferenced",
+			Handler:    _Call_EventConferenced_Handler,
+		},
+		{
+			MethodName: "EventConnected",
+			Handler:    _Call_EventConnected_Handler,
+		},
+		{
+			MethodName: "EventReleased",
+			Handler:    _Call_EventReleased_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
