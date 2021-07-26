@@ -13,7 +13,7 @@ service Call {
     rpc Conference(ConferenceRequest) returns (ConferenceResponse);
     rpc MuteConference(MuteConferenceRequest) returns (MuteConferenceResponse);
     rpc Release(ReleaseRequest) returns (ReleaseResponse);
-    rpc Route(RouteRequest) returns (RouteReponse);
+    rpc Route(RouteRequest) returns (RouteResponse);
     rpc EventAlerted(EventAlertedRequest) returns (EventAlertedResponse);
     rpc EventHeld(EventHeldRequest) returns (EventHeldResponse);
     rpc EventRetrived(EventRetrivedRequest) returns (EventRetrivedResponse);
